@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>lalazhaopin</artifactId>
+        <groupId>cn.leiyy</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <packaging>war</packaging>
+    <artifactId>app-server</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.leiyy</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.leiyy</groupId>
+            <artifactId>web</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <!-- 开发环境 -->
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <!-- 以下配置properties中用到一些变量，如数据库连接参数、日志打印等 -->
+            <properties>
+                <!-- DB Resource -->
+                <jdbc_driverClassName>com.mysql.jdbc.Driver</jdbc_driverClassName>
+                <jdbc_url>jdbc:mysql://localhost:3306/learning</jdbc_url>
+                <jdbc_username>root</jdbc_username>
+                <jdbc_password>christmas258@</jdbc_password>
+
+                <log.moduleName>ssm-project</log.moduleName>
+                <log.base>logs</log.base>
+                <log.other.level>DEBUG</log.other.level>
+                <log.root.level>DEBUG</log.root.level>
+                <log.stdout.ref><![CDATA[<appender-ref ref="stdout" />]]></log.stdout.ref>
+            </properties>
+        </profile>
+    </profiles>
+
+</project>
